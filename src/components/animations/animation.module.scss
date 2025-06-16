@@ -1,0 +1,55 @@
+.infiniteScroll {
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0),
+  );
+
+  ul {
+    display: flex;
+    gap: 112px;
+    padding: 1rem 0;
+    margin: 0;
+    list-style: none;
+    width: max-content;
+
+    .imageWrapper {
+      position: relative;
+      height: 40px;
+      width: auto;
+      aspect-ratio: 3 / 2;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.left {
+  animation: scrollLeft 15s linear infinite;
+}
+
+.right {
+  animation: scrollRight 15s linear infinite;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
