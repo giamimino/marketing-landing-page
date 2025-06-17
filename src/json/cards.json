@@ -1,0 +1,33 @@
+[
+  {
+    "direction": "left",
+    "option": "section",
+    "image": "dark-cube",
+    "content": "DOML is a digital media agency powered by AI technology providing real time, <span>data-driven insights</span> your business and audience. The mission of DOML is to create the best experiences for companies through intelligent insights, powerful analytics and <span>strategic execution</span>."
+  },
+  {
+    "direction": "right",
+    "option": "section",
+    "image": "unknown2",
+    "content": "It's all about getting your message in front of the right audience and creating those valuable <span>relationships</span>. Learn More about how DOML can help you do just that - all with a simple, easy-to-use platform"
+  },
+  {
+    "image": ["girl-1", "girl-2", "girl-3", "girl-4"],
+    "option": "comment",
+    "content": ["It's all about getting your message in front of the right audience and creating those valuable relationships. Learn More about how DOML can help you do just that - all with a simple, easy-to-use platform."],
+    "name": ["Amaka Micheal"],
+    "about": ["Media Executive, Buying & Control"]
+  },
+  {
+    "direction": "left",
+    "image": "light-cube",
+    "content": "DOML is a digital media agency powered by AI technology providing real time, <span>data-driven insights</span> your business and audience. The mission of DOML is to create the best experiences for companies through intelligent insights, powerful analytics and <span>strategic execution</span>.",
+    "option": "section"
+  },
+  {
+    "direction": "right",
+    "image": "half-circle",
+    "content": "It's all about getting your message in front of the right audience and creating those valuable relationships. Learn More about how DOML can help you do just that - all with a simple, easy-to-use platform.",
+    "option": "section"
+  }
+]

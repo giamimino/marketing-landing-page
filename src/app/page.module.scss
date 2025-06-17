@@ -5,7 +5,8 @@
   justify-content: space-between;
 
   img {
-    animation: popUp 1.2s ease forwards;
+    opacity: 0;
+    animation: popUp 0.9s 1s ease forwards;
   }
   
   aside {

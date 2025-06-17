@@ -57,7 +57,12 @@
 }
 
 .h1 {
+  opacity: 0;
+}
+
+.visible {
   display: flex;
+  opacity: 1;
   flex-direction: column;
   font-family: "Al Nile", "Helvetica Neue", sans-serif;
   line-height: 112%;
@@ -70,7 +75,7 @@
   }
 }
 
-.typing {
+.visible .typing {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
@@ -79,15 +84,96 @@
   opacity: 0;
 }
 
-.rotate {
+.visible .rotate {
   display: inline-block;
   white-space: nowrap;
   animation: rotateXanim 8s cubic-bezier(.82,-0.45,.18,1.45) infinite;
-  animation-delay: 1.5s; /* start after typing finishes */
+  animation-delay: 1.5s;
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
 
+.card {
+  background-color: #171717;
+  justify-content: space-between;
+  gap: 22px;
+  
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    h1 {
+      font-size: 25px;
+      background: linear-gradient(to right, #FF2DF7 0%, #5200FF 10%, #00F0FF 20%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+
+// section
+
+.section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  perspective: 1000;
+
+  .dropDown {
+    opacity: 0;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  &.inView .dropDownLeft {
+    animation: dropDownLeft 1.5s cubic-bezier(.42,-0.05,.35,1.49) forwards;
+    animation-delay: 100ms;
+  }
+
+  &.inView .dropDownRight {
+    animation: dropDownRight 1.5s cubic-bezier(.42,-0.05,.35,1.49) forwards;
+    animation-delay: 100ms;
+  }
+  
+  &.inView p {
+    animation: showDown 1.6s cubic-bezier(.82,-0.45,.18,1.45) forwards;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  aside {
+    width: 575px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    p {
+      padding: 10px;
+      font-size: 20px;
+      font-weight: 400;
+      padding-bottom: 30px;
+      border-bottom: 1px solid;
+      border-image: linear-gradient(-76deg, #00F0FF 0%, #5200FF 48%, #FF2DF7 100%);
+      border-image-slice: 1;
+      opacity: 0;
+
+      span {
+        color: #0075FF;
+        font-weight: 900;
+      }
+    }
+
+    * {
+      width: fit-content;
+    }
+  }
+}
 
 // animations
 
@@ -118,4 +204,64 @@
   100% {
     transform: rotate(0deg);
   }
+}
+
+@keyframes fadeRight {
+  to {
+    transform: translate(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes showDown {
+  0% {
+    transform: translateY(-100px) rotateX(180deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+@keyframes dropDownRight {
+  0% {
+    transform: translate(50%, -50%) rotate(360deg) rotateX(360deg) rotateY(360deg);
+    opacity: 0;
+    filter: blur(20px);
+  }
+
+   100% {
+    transform: 
+    translate(0, 0)
+    rotate(0)
+    rotateX(0)
+    rotateY(0);
+    opacity: 1;
+    filter: blur(0);
+   }
+}
+
+@keyframes dropDownLeft {
+  0% {
+    transform: translate(-50%, -50%) rotate(360deg) rotateX(360deg) rotateY(360deg);
+    opacity: 0;
+    filter: blur(20px);
+  }
+
+   100% {
+    transform: 
+    translate(0, 0)
+    rotate(0)
+    rotateX(0)
+    rotateY(0);
+    opacity: 1;
+    filter: blur(0);
+   }
 }
