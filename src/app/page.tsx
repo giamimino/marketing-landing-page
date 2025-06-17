@@ -41,13 +41,18 @@ export default function Home() {
           <Section
             key={index}
             direction={card.direction || "left"}
-            content={card.content || "404"}
-            image={card.image || "404"}
+            content={Array.isArray(card.content) ? card.content.join(" ") : (card.content || "404")}
+            image={Array.isArray(card.image) ? card.image[0] || "404" : card.image || "404"}
           /> : 
           <CardSlider
             key={index}
-            image={card.image}
-            content={card.content}
+            image={Array.isArray(card.image) ? card.image : [card.image]}
+            content={Array.isArray(card.content) ? card.content : [card.content]}
+            name={(Array.isArray(card.name) ? card.name : [card.name]).filter((n): n is string => typeof n === "string")}
+            about={
+              (Array.isArray(card.about) ? card.about : [card.about])
+                .filter((a): a is string => typeof a === "string")
+            }
           />
         ))}
       </main>

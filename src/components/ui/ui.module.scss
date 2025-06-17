@@ -175,6 +175,15 @@
   }
 }
 
+.card {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+  padding: 93px 117px;
+}
+
 // animations
 
 @keyframes typing {

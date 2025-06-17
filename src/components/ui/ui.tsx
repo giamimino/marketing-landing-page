@@ -148,7 +148,7 @@ export function CardSlider(props: CardProps) {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000); // auto-slide every 5s
+    const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
   }, []);
 

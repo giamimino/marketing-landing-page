@@ -14,9 +14,9 @@
   {
     "image": ["girl-1", "girl-2", "girl-3", "girl-4"],
     "option": "comment",
-    "content": ["It's all about getting your message in front of the right audience and creating those valuable relationships. Learn More about how DOML can help you do just that - all with a simple, easy-to-use platform."],
-    "name": ["Amaka Micheal"],
-    "about": ["Media Executive, Buying & Control"]
+    "content": ["It's all about getting your message in front of the right audience and creating those valuable relationships. Learn More about how DOML can help you do just that - all with a simple, easy-to-use platform.","It's all about getting your message in front of the right audience and creating those valuable relationships. Learn More about how DOML can help you do just that - all with a simple, easy-to-use platform.", "It's all about getting your message in front of the right audience and creating those valuable relationships. Learn More about how DOML can help you do just that - all with a simple, easy-to-use platform.", "It's all about getting your message in front of the right audience and creating those valuable relationships. Learn More about how DOML can help you do just that - all with a simple, easy-to-use platform."],
+    "name": ["Amaka Micheal","Amaka Micheal", "Amaka Micheal", "Amaka Micheal"],
+    "about": ["Media Executive, Buying & Control","Media Executive, Buying & Control", "Media Executive, Buying & Control", "Media Executive, Buying & Control"]
   },
   {
     "direction": "left",
