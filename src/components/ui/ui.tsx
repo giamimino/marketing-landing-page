@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './ui.module.scss';
 import Image from 'next/image'
 import 'remixicon/fonts/remixicon.css'
+import { motion, AnimatePresence } from 'framer-motion';
 
 type ButtonProps = {
   title: string,
@@ -138,12 +139,15 @@ export function Section(props: SectionProps) {
 
 export function CardSlider(props: CardProps) {
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0); 
 
   const nextSlide = () => {
+    setDirection(1);
     setIndex((prev) => (prev + 1) % props.name.length);
   };
 
   const prevSlide = () => {
+    setDirection(-1);
     setIndex((prev) => (prev - 1 + props.name.length) % props.name.length);
   };
 
@@ -153,28 +157,89 @@ export function CardSlider(props: CardProps) {
   }, []);
 
   return (
-    <section className={styles.cardSlider}>
+    <section className={styles.cardSlider} style={{position: "relative"}}>
       <div className={styles.card}>
-        <Image
-          src={`https://raw.githubusercontent.com/giamimino/images/refs/heads/main/marketing-landing-page/${props.image[index]}.webp`}
-          alt={props.image[index]}
-          width={256}
-          height={256}
-          style={{ objectFit: 'contain' }}
-        />
-        <aside>
-          <p dangerouslySetInnerHTML={{ __html: props.content[index] }} />
-          <h1>{props.name[index]}</h1>
-          <p dangerouslySetInnerHTML={{ __html: props.about[index] }} />
-          <h3><i className='ri-discord-fill'></i></h3>
-        </aside>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ x: direction === 1 ? 300 : -300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: direction === 1 ? -300 : 300, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className={styles.sliderContent}
+          >
+            <Image
+              src={`https://raw.githubusercontent.com/giamimino/images/refs/heads/main/marketing-landing-page/${props.image[index]}.webp`}
+              alt={props.image[index]}
+              width={256}
+              height={256}
+              style={{ objectFit: 'contain' }}
+            />
+            <aside>
+              <p dangerouslySetInnerHTML={{ __html: props.content[index] }} />
+              <h1>{props.name[index]}</h1>
+              <p dangerouslySetInnerHTML={{ __html: props.about[index] }} />
+              <h3><i className='ri-discord-fill'></i></h3>
+            </aside>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       <div className={styles.controls}>
-        <button onClick={prevSlide}><i className="ri-arrow-left-s-line"></i></button>
-        <button onClick={nextSlide}><i className="ri-arrow-right-s-line"></i></button>
+        <button onClick={prevSlide}><i className="ri-arrow-left-line"></i></button>
+        <button onClick={nextSlide}><i className="ri-arrow-right-line"></i></button>
       </div>
     </section>
   );
 }
 
+export function Search() {
+  const searchRef = useRef<HTMLHeadingElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if(searchRef.current) {
+      observer.observe(searchRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <section className={`${styles.search}`} ref={searchRef}>
+        <Image 
+          src="https://raw.githubusercontent.com/giamimino/images/refs/heads/main/marketing-landing-page/unknown2.webp" 
+          alt="unknown" 
+          width={500}
+          height={500}
+          className={inView ? styles.popUp : ""}
+          objectFit='contain'/>
+          <aside>
+            <h1>
+              <span className={inView ? styles.fadeRight : ""}>Get exponential reach</span>
+              <span className={inView ? styles.fadeRight : ""}>via <span>AI Marketing</span></span>
+            </h1>
+            <div>
+              <div>
+                <input type="text" placeholder="Enter your work email" />
+              </div>
+              <Button
+                title="Get in touch"
+              />
+            </div>
+          </aside>
+      </section>
+  )
+}

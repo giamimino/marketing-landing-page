@@ -93,28 +93,6 @@
   backface-visibility: hidden;
 }
 
-.card {
-  background-color: #171717;
-  justify-content: space-between;
-  gap: 22px;
-  
-
-  aside {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    h1 {
-      font-size: 25px;
-      background: linear-gradient(to right, #FF2DF7 0%, #5200FF 10%, #00F0FF 20%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  }
-}
-
-
 // section
 
 .section {
@@ -175,13 +153,154 @@
   }
 }
 
+
+// card
+
 .card {
-  display: flex;
+  background-color: #171717;
   width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  gap: 48px;
   padding: 93px 117px;
+  font-family: "Al Nile", "Helvetica Neue", sans-serif;
+  border-radius: 20px;
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    h1 {
+      font-size: 32px;
+      background: linear-gradient(to right, #FF2DF7 0%, #5200FF 10%, #00F0FF 20%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    h3 {
+      background-color: #fff;
+      color: #171717;
+      font-size: 20px;
+      width: fit-content;
+      padding: 0 6px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  }
+
+  > div {
+    gap: 63px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.controls {
+  width: 100px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
+  button:nth-child(1):hover {
+    animation: playing 2.4s ease infinite;
+  }
+  button:nth-child(2):hover {
+    animation: playing 2.4s ease infinite;
+  }
+  button {
+    transition: all .3s ease;
+    cursor: pointer;
+    i {
+      font-size: 24px;
+      background: linear-gradient(to right, #FF2DF7 0%, #5200FF 50%, #00F0FF 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+  }
+}
+
+// Search 
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  background-color: #171717;
+  perspective: 1000px;
+  border-radius: 20px;
+  
+  img {
+    opacity: 0;
+  }
+
+  .popUp {
+    animation: popUp3D 1.5s cubic-bezier(.82,0,.18,1.45) forwards;
+    transform-style: preserve-3d;
+  }
+  
+  aside {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+
+    h1 {
+      font-size: 50px;
+      display: flex;
+      flex-direction: column;
+
+      >span {
+        opacity: 0;
+         >span {
+          perspective: 1000px;
+          background: linear-gradient(-76deg, #00F0FF 0%, #5200FF 48%, #FF2DF7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+
+    >div {
+      display: flex;
+      gap: 14px;
+      >div {
+        padding: 1px;
+        border-radius: 999px;
+        background: linear-gradient(-76deg, #00F0FF 0%, #5200FF 48%, #FF2DF7 100%);
+        display: flex;
+
+        input {
+          padding: 10px 35px;
+          border-radius: 999px;
+          overflow: hidden;
+          position: relative;
+          background-color: #171717;
+
+          &:focus {
+            outline: 0;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.fadeRight {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translate(-20px, -10px);
+  animation: fadeRight 1s ease forwards;
 }
 
 // animations
@@ -273,4 +392,42 @@
     opacity: 1;
     filter: blur(0);
    }
+}
+
+@keyframes playing {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  10% {
+    transform: rotate(-12deg);
+  }
+  20% {
+    transform: rotate(12deg) scale(1.1);
+  }
+  30% {
+    transform: rotate(-12deg);
+  }
+  40% {
+    transform: rotate(12deg);
+  }
+  50% {
+    transform: rotate(0) scale(1);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes popUp3D {
+  0% {
+    transform: scale(0) rotateY(360deg) rotateX(360deg);
+    filter: blur(20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) rotateY(0) rotateX(0);
+    opacity: 1;
+    filter: blur(0);
+  }
 }

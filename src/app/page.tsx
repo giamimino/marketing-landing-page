@@ -1,8 +1,9 @@
 import styles from "./page.module.scss"
 import Image from "next/image";
 import InfScrollBar from "@/components/animations/InfScrollBar";
-import {Button, Section, Title, CardSlider} from '@/components/ui/ui'
+import {Search, Button, Section, Title, CardSlider} from '@/components/ui/ui'
 import cards from "@/json/cards.json"
+import Footer from "@/components/footer/Footer";
 
 const scrollValue1 = ["airtel", "uba", "paga", "mnt", "dangote", "firstbank"]
 const scrollValue2 = ["Google-cloud", "Ebay", "Tux", "Spotify", "Airbnb", "Facebook", "Coca-Cola"]
@@ -10,8 +11,9 @@ const scrollValue3 = ["Zoom", "Creative-Cloud", "Netflix", "Discord", "Figma", "
 
 export default function Home() {
 
+
   return (
-    <div className="p-66.5 flex flex-col gap-44">
+    <div className="p-66.5 pb-0 flex flex-col gap-44">
       <section className={styles.heroWelcome}>
         <aside>
           <Title size='text-7xl' />
@@ -56,11 +58,13 @@ export default function Home() {
           />
         ))}
       </main>
+      <Search />
       <section>
         <InfScrollBar value={scrollValue2} direction='left' />
         <InfScrollBar value={scrollValue3} direction='right' />
         <p className="text-center mt-12">Trusted by the world’s most ambitious teams.</p>
       </section>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,18 @@
+.footer {
+  width: 100%;
+  z-index: 999;
+  padding: 11px 0 75px 0;
+  border-top: 2px solid #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.8s cubic-bezier(.82,-0.45,.18,1.45);
+  p {
+    font-size: 20px;
+  }
+}
+
+.scrolled {
+  padding-top: 20px;
+  padding-inline: 50px;
+}

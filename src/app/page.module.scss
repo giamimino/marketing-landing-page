@@ -45,8 +45,9 @@
 }
 
 
-// animations
 
+
+// animations
 @keyframes showDown {
   0% {
     transform: translateY(-100px) rotateX(180deg);
@@ -95,3 +96,4 @@
     opacity: 1;
   }
 }
+
