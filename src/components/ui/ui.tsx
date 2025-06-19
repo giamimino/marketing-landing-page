@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Children, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './ui.module.scss';
 import Image from 'next/image'
 import 'remixicon/fonts/remixicon.css'
