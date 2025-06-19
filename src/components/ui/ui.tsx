@@ -214,7 +214,6 @@ export function Search() {
       observer.disconnect();
     };
   }, []);
-
   return (
     <section className={`${styles.search}`} ref={searchRef}>
         <Image 
