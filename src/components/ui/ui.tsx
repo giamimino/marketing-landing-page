@@ -75,7 +75,9 @@ export  function Title(props: TitleProps) {
 
 export const Button: React.FC<ButtonProps> = ({ children, ...props}) =>  (
     <button {...props} className={styles.button}>
-      {children}
+      <span>
+        {children}
+      </span>
       <i className={"ri-arrow-right-line"}></i>
     </button>
 )
