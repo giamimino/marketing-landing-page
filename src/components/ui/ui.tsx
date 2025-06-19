@@ -1,16 +1,14 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Children, useEffect, useRef, useState } from 'react';
 import styles from './ui.module.scss';
 import Image from 'next/image'
 import 'remixicon/fonts/remixicon.css'
 import { motion, AnimatePresence } from 'framer-motion';
 
-type ButtonProps = {
-  title: string,
-  type?: "button" | "submit" | "reset",
-  icon?: string,
-}
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: React.ReactNode;
+};
 
 type TitleProps = {
   size: "text-[40px]" | "text-7xl";
@@ -75,14 +73,12 @@ export  function Title(props: TitleProps) {
 
 
 
-export function Button(props: ButtonProps) {
-  return (
-    <button type={props.type} className={styles.button}>
-      <span>{props.title}</span>
-      <i className={props.icon || "ri-arrow-right-line"}></i>
+export const Button: React.FC<ButtonProps> = ({ children, ...props}) =>  (
+    <button {...props} className={styles.button}>
+      {children}
+      <i className={"ri-arrow-right-line"}></i>
     </button>
-  )
-}
+)
 
 
 export function Section(props: SectionProps) {
@@ -118,7 +114,7 @@ export function Section(props: SectionProps) {
       <aside>
         <Title size="text-[40px]" />
         <p dangerouslySetInnerHTML={{ __html: props.content }} />
-        <Button title="Learn more" />
+        <Button>Learn more</Button>
       </aside>
       <div style={{
         perspective: 1000
@@ -235,9 +231,7 @@ export function Search() {
               <div>
                 <input type="text" placeholder="Enter your work email" />
               </div>
-              <Button
-                title="Get in touch"
-              />
+              <Button>Get in touch</Button>
             </div>
           </aside>
       </section>

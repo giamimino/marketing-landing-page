@@ -20,7 +20,7 @@ export default function Home() {
           <p className={styles.showDown}>
             Our vision is to revolutionize the way brands and advertisers target, reach
           </p>
-          <Button title="Get Started" type='button' />
+          <Button type='button'>Get Started</Button>
         </aside>
         <Image src="http://raw.githubusercontent.com/giamimino/images/refs/heads/main/marketing-landing-page/earth.webp" 
         alt="earth"
